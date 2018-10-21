@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -53,11 +54,13 @@ public class MainViewController implements Initializable {
     }    
     private void loadForTheFirst() throws IOException{
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/View/Layout/NowShowingView.fxml"));
+        FitChildContent(pane);
 	rootPanel.getChildren().setAll(pane);
     }
     @FXML
     private void loadNowShowing(MouseEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/View/Layout/NowShowingView.fxml"));
+        FitChildContent(pane);
 	rootPanel.getChildren().setAll(pane);
     }
 
@@ -72,5 +75,10 @@ public class MainViewController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/View/Layout/AccountManagement.fxml"));
 	rootPanel.getChildren().setAll(pane);
     }
-    
+    private void FitChildContent(Node child){
+        AnchorPane.setBottomAnchor(child, 0.0);
+        AnchorPane.setTopAnchor(child, 0.0);
+        AnchorPane.setLeftAnchor(child, 0.0);
+        AnchorPane.setRightAnchor(child, 0.0);
+    }
 }

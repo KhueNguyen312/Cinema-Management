@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="724.0" prefWidth="1091.0" styleClass="parent" stylesheets="@../style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.FilmBookingViewController">
+   <children>
+      <JFXButton layoutX="34.0" layoutY="43.0" prefHeight="58.0" prefWidth="188.0" text="Back to menu" textFill="#929292">
+         <graphic>
+            <ImageView fitHeight="48.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Imgs/img_69772.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="21.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="347.0" fitWidth="255.0" layoutX="75.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

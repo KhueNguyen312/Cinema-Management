@@ -47,7 +47,7 @@ public class LoginViewController implements Initializable {
 
     @FXML
     private void login(ActionEvent event) throws IOException {
-        if (tbUserName.getText().equals("Syaoran") && passwordBox.getText().equals("1")){
+        if (tbUserName.getText().equals("syaoran") && passwordBox.getText().equals("1")){
          ((Node)event.getSource()).getScene().getWindow().hide();
          Parent parent = FXMLLoader.load(getClass().getResource("/view/MainView.fxml"));
          Stage stage = new Stage();
