@@ -1,0 +1,10 @@
+.root {
+    -fx-background-image: url("../Imgs/wallpaper.JPG");
+    -fx-background-size: 100% 100%; 
+}
+.parent {
+	-fx-background-color: #34343B
+}
+.other {
+	-fx-background-color: #191C1F
+}

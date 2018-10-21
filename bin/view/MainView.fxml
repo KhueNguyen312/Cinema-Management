@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
+   <children>
+      <VBox layoutX="-1.0" prefHeight="805.0" prefWidth="298.0" styleClass="other" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="903.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="72.0" prefWidth="298.0">
+               <children>
+                  <Circle fx:id="avatarCircle" fill="#1f93ff" layoutX="50.0" layoutY="38.0" radius="36.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label layoutX="104.0" layoutY="14.0" text="User Name" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="104.0" layoutY="38.0" text="type" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="63.0" prefWidth="298.0">
+               <children>
+                  <Label layoutX="45.0" layoutY="18.0" onMouseClicked="#loadNowShowingLayout" prefHeight="21.0" prefWidth="173.0" text="Now Showing" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="63.0" prefWidth="298.0">
+               <children>
+                  <Label layoutX="45.0" layoutY="18.0" prefHeight="28.0" prefWidth="226.0" text="Account Management" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="63.0" prefWidth="298.0">
+               <children>
+                  <Label layoutX="45.0" layoutY="18.0" prefHeight="28.0" prefWidth="226.0" text="Statistics" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <AnchorPane fx:id="rootPanel" layoutX="297.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="805.0" prefWidth="903.0" styleClass="parent" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="297.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>
