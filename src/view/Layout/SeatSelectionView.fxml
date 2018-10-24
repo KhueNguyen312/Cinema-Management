@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="775.0" prefWidth="1207.0" styleClass="seat-selection" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SeatSelectionViewController">
+   <children>
+      <JFXButton layoutX="304.0" layoutY="156.0" prefHeight="42.0" prefWidth="538.0" style="-fx-background-color: #D88A04;" text="SCREEN" textFill="WHITE" AnchorPane.leftAnchor="304.0" AnchorPane.topAnchor="156.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <Label alignment="CENTER" layoutX="348.0" layoutY="55.0" prefHeight="58.0" prefWidth="408.0" text="SAMPLE MOVIE" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="348.0" AnchorPane.rightAnchor="348.0" AnchorPane.topAnchor="55.0">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnBack" layoutX="44.0" layoutY="53.0" onAction="#loadPreviousScreen" prefHeight="62.0" prefWidth="223.0" text="Previous Screen" textFill="#929292">
+         <font>
+            <Font size="21.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="48.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Imgs/img_69772.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <HBox layoutX="329.0" layoutY="660.0" prefHeight="42.0" prefWidth="511.0" AnchorPane.leftAnchor="329.0" AnchorPane.rightAnchor="367.0" AnchorPane.topAnchor="660.0">
+         <children>
+            <JFXButton contentDisplay="GRAPHIC_ONLY" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #472B34;" />
+            <Label prefHeight="42.0" prefWidth="93.0" text="   booked" textAlignment="RIGHT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXButton contentDisplay="GRAPHIC_ONLY" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #91268F;" />
+            <Label prefHeight="42.0" prefWidth="92.0" text="   selected" textAlignment="RIGHT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXButton contentDisplay="GRAPHIC_ONLY" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #3A78C3;" />
+            <Label prefHeight="42.0" prefWidth="84.0" text="   normal" textAlignment="RIGHT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXButton contentDisplay="GRAPHIC_ONLY" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #D00000;" />
+            <Label prefHeight="42.0" prefWidth="61.0" text="   VIP" textAlignment="RIGHT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <FlowPane fx:id="seatPane" layoutX="304.0" layoutY="218.0" prefHeight="381.0" prefWidth="561.0" AnchorPane.leftAnchor="304.0" AnchorPane.topAnchor="218.0" />
+   </children>
+</AnchorPane>

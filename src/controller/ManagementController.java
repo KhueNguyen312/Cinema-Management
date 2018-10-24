@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author stari
  */
-public class AccountManagementController implements Initializable {
+public class ManagementController implements Initializable {
 
     /**
      * Initializes the controller class.

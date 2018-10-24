@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import com.jfoenix.controls.*?>
@@ -9,10 +10,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="724.0" prefWidth="1091.0" styleClass="parent" stylesheets="@../style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.FilmBookingViewController">
+<AnchorPane id="AnchorPane" fx:id="rootbookingPanel" prefHeight="724.0" prefWidth="1091.0" styleClass="parent" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FilmBookingViewController">
    <children>
-      <JFXButton layoutX="34.0" layoutY="43.0" prefHeight="58.0" prefWidth="188.0" text="Back to menu" textFill="#929292">
+      <JFXButton fx:id="btnBack" layoutX="34.0" layoutY="43.0" onAction="#backToMenu" prefHeight="58.0" prefWidth="188.0" text="Back to menu" textFill="#929292">
          <graphic>
             <ImageView fitHeight="48.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -24,6 +24,55 @@
             <Font size="21.0" />
          </font>
       </JFXButton>
-      <ImageView fitHeight="347.0" fitWidth="255.0" layoutX="75.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="posterFilm" fitHeight="360.0" fitWidth="250.0" layoutX="75.0" layoutY="137.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../Imgs/YourName.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="lbName" layoutX="346.0" layoutY="137.0" prefHeight="43.0" prefWidth="294.0" text="Your Name" textFill="WHITE">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnBooking" layoutX="381.0" layoutY="453.0" onAction="#loadSchedure" prefHeight="31.0" prefWidth="118.0" style="-fx-background-color: #0CA9DE;" text="Booking" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="346.0" layoutY="182.0" text="Director:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="346.0" layoutY="217.0" text="Cast:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="347.0" layoutY="251.0" text="Genre:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="346.0" layoutY="283.0" text="Release Date:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="347.0" layoutY="323.0" text="Running time:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="347.0" layoutY="362.0" text="Language:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="348.0" layoutY="401.0" text="Rated:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
