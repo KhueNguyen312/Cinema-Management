@@ -23,10 +23,11 @@ public class MoviesDAO implements DAO{
             m.setCast(rs.getString("cast"));
             m.setGenre(rs.getString("genre"));
             m.setLanguage(rs.getString("language"));
-            m.setReleaseDate(rs.getDate("released_date"));
+            m.setReleaseDate(rs.getDate("release_date"));
             m.setRated(rs.getString("rated"));
             m.setContent(rs.getString("content"));
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return m;
     }
@@ -42,7 +43,8 @@ public class MoviesDAO implements DAO{
          while (rs.next()) {
             Movies p = createMovies(rs);
             list.add(p);
-             System.out.println(rs.getInt(1));
+//             System.out.println(rs.getInt(1));
+             System.out.println(rs.getString(2));
          }
          rs.close();
          con.close();

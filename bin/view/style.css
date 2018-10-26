@@ -8,3 +8,11 @@
 .other {
 	-fx-background-color: #191C1F
 }
+.scroll-pane {
+   -fx-background: #34343B;
+   -fx-border-color: #34343B;
+}
+.seat-selection {
+    -fx-background-image: url("../Imgs/CinemaBackground.JPG");
+    -fx-background-size: 100% 100%; 
+}

@@ -51,6 +51,7 @@ public class NowShowingViewController implements Initializable {
         FlowPane container = new FlowPane();
         for( Movies movie:listMovies){
             VBox sampleFilm = CreateInfoFilm(movie.getName(), movie.getImg());
+//            VBox sampleFilm = CreateInfoFilm("abc","/Imgs/avatar_1.JPG");
             container.setVgap(20);
             container.setHgap(50);
             container.setPrefWidth(pnShowInfo.getPrefWidth());
@@ -72,7 +73,7 @@ public class NowShowingViewController implements Initializable {
             @Override
             public void handle(MouseEvent mouseEvent) {
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Layout/FilmBookingView.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/Layout/FilmBookingView.fxml"));
                 AnchorPane pane = fxmlLoader.load();
                 FilmBookingViewController nextView = fxmlLoader.<FilmBookingViewController>getController();
                 nextView.SetInfo(imgUrl, name);

@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="752.0" prefWidth="1217.0" styleClass="parent" stylesheets="@../style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane fx:id="rootPanel" prefHeight="752.0" prefWidth="1217.0" styleClass="parent" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NowShowingViewController">
    <children>
-      <Label layoutX="44.0" layoutY="59.0" text="New Releases" textFill="WHITE">
+      <Label layoutX="44.0" layoutY="59.0" text="Now Showing" textFill="WHITE">
          <font>
             <Font size="45.0" />
          </font>
       </Label>
+      <ScrollPane fx:id="pnShowInfo" fitToWidth="true" hbarPolicy="NEVER" layoutX="44.0" layoutY="135.0" prefHeight="603.0" prefWidth="1156.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="135.0" />
    </children>
 </AnchorPane>

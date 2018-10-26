@@ -59,26 +59,26 @@ public class MainViewController implements Initializable {
         this.labelUsername.setText(userID);
     }
     private void loadForTheFirst() throws IOException{
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/View/Layout/NowShowingView.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/Layout/NowShowingView.fxml"));
         GeneralFuntion.FitChildContent(pane);
 	rootPanel.getChildren().setAll(pane);
     }
     @FXML
     private void loadNowShowing(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/View/Layout/NowShowingView.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/Layout/NowShowingView.fxml"));
         GeneralFuntion.FitChildContent(pane);
 	rootPanel.getChildren().setAll(pane);
     }
 
     @FXML
     private void loadComingSoon(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/View/Layout/ComingSoonView.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/Layout/ComingSoonView.fxml"));
 	rootPanel.getChildren().setAll(pane);
     }
 
     @FXML
     private void loadAccountMng(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/View/Layout/AccountManagement.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/Layout/AccountManagement.fxml"));
 	rootPanel.getChildren().setAll(pane);
     }
 }
