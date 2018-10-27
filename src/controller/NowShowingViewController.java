@@ -5,12 +5,10 @@
  */
 package controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import java.sql.Date;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,7 +36,7 @@ public class NowShowingViewController implements Initializable {
     private ScrollPane pnShowInfo;
     @FXML
     private AnchorPane rootPanel;
-
+    AnchorPane NextScene; 
     /**
      * Initializes the controller class.
      */
@@ -50,7 +48,7 @@ public class NowShowingViewController implements Initializable {
         List<Movies> listMovies = movies.getMovies();
         FlowPane container = new FlowPane();
         for( Movies movie:listMovies){
-            VBox sampleFilm = CreateInfoFilm(movie.getName(), movie.getImg());
+            VBox sampleFilm = CreateInfoFilm(movie.getName(), movie.getImg(),movie.getDirector(),movie.getCast(),movie.getGenre(),movie.getReleaseDate(),movie.getDuaration(),movie.getLanguage(),movie.getRate());
             container.setVgap(20);
             container.setHgap(50);
             container.setPrefWidth(pnShowInfo.getPrefWidth());
@@ -61,8 +59,9 @@ public class NowShowingViewController implements Initializable {
         pnShowInfo.setContent(container);
         pnShowInfo.setPannable(true);
         
+        
     }
-    public VBox CreateInfoFilm(String name,String imgUrl){
+    public VBox CreateInfoFilm(String name,String imgUrl,String director,String cast,String genre,Date rDate,int runningTime,String lang,String rated){
         VBox InfoPanel = new VBox();
         Image img = new Image(imgUrl);
         ImageView imgView = new ImageView(img);
@@ -71,16 +70,11 @@ public class NowShowingViewController implements Initializable {
         imgView.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Layout/FilmBookingView.fxml"));
-                AnchorPane pane = fxmlLoader.load();
-                FilmBookingViewController nextView = fxmlLoader.<FilmBookingViewController>getController();
-                nextView.SetInfo(imgUrl, name);
-                GeneralFuntion.FitChildContent(pane);
-                rootPanel.getChildren().setAll(pane);
-            } catch (IOException ex) {
-                Logger.getLogger(NowShowingViewController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                //FXMLLoader fxmlLoader = new FXMLLoader();
+                FXMLLoader fxmlLoader = MainViewController.getInstance().createPage(NextScene, "/view/Layout/FilmBookingView.fxml");
+                //FilmBookingViewController controller = (FilmBookingViewController)fxmlLoader.getController();
+                fxmlLoader.<FilmBookingViewController>getController().SetInfo(imgUrl, name, director, cast, genre, rDate, runningTime, lang, rated);
+                
             }
         });
         

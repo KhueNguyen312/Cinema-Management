@@ -13,11 +13,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
 /**
@@ -53,6 +51,10 @@ public class SeatSelectionViewController implements Initializable {
 
     @FXML
     private void loadPreviousScreen(ActionEvent event) {
+        AnchorPane tmp = MainViewController.getInstance().rootPanel;
+        tmp.getChildren().remove(2, tmp.getChildren().size());
+        tmp.getChildren().get(1).toFront();
+        
     }
     private JFXButton createSeat(String seatName){
         JFXButton btnSeat = new JFXButton(seatName);

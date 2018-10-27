@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="rootbookingPanel" prefHeight="724.0" prefWidth="1091.0" styleClass="parent" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FilmBookingViewController">
+<AnchorPane id="AnchorPane" fx:id="rootbookingPanel" prefHeight="724.0" prefWidth="1359.0" styleClass="parent" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FilmBookingViewController">
    <children>
       <JFXButton fx:id="btnBack" layoutX="34.0" layoutY="43.0" onAction="#backToMenu" prefHeight="58.0" prefWidth="188.0" text="Back to menu" textFill="#929292">
          <graphic>
@@ -29,7 +29,7 @@
             <Image url="@../../Imgs/YourName.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="lbName" layoutX="346.0" layoutY="137.0" prefHeight="43.0" prefWidth="294.0" text="Your Name" textFill="WHITE">
+      <Label fx:id="lbName" layoutX="346.0" layoutY="137.0" prefHeight="45.0" prefWidth="1096.0" text="Your Name" textFill="WHITE">
          <font>
             <Font size="30.0" />
          </font>
@@ -72,6 +72,41 @@
       <Label layoutX="348.0" layoutY="401.0" text="Rated:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbDirector" layoutX="430.0" layoutY="182.0" prefHeight="26.0" prefWidth="1012.0" text="Director" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbCast" layoutX="404.0" layoutY="217.0" prefHeight="26.0" prefWidth="1037.0" text="cast" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbGenre" layoutX="416.0" layoutY="251.0" prefHeight="26.0" prefWidth="1026.0" text="genre" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbRDate" layoutX="461.0" layoutY="283.0" prefHeight="26.0" prefWidth="981.0" text="release date" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbRunningTime" layoutX="471.0" layoutY="323.0" prefHeight="26.0" prefWidth="587.0" text="running time" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbLang" layoutX="440.0" layoutY="362.0" prefHeight="26.0" prefWidth="1001.0" text="lang" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbRated" layoutX="410.0" layoutY="401.0" prefHeight="26.0" prefWidth="587.0" text="rated" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
          </font>
       </Label>
    </children>
