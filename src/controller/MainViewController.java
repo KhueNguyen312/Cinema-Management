@@ -5,22 +5,27 @@
  */
 package controller;
 
+import com.jfoenix.controls.*;
+import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
+import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 /**
@@ -31,20 +36,23 @@ import javafx.util.Duration;
 public class MainViewController implements Initializable {
 
     @FXML
-    private AnchorPane btnNowShowing;
+    private JFXButton btnNowShowing;
     @FXML
     public AnchorPane rootPanel;
     @FXML
     private Circle avatarCircle;
     @FXML
-    private AnchorPane btnComingSoon;
-    @FXML
-    private AnchorPane btnAccountMng;
+    private JFXButton btnComingSoon;
     @FXML
     private Label labelUsername;
     
     public AnchorPane home;
     private static MainViewController instance;
+    @FXML
+    private JFXButton btnAccountMng1;
+    @FXML
+    private JFXNodesList nodeListMng;
+    private int expander = 0;
     public MainViewController(){
         instance = this;
     }
@@ -60,6 +68,7 @@ public class MainViewController implements Initializable {
         Image img = new Image("/Imgs/avatar_1.JPG");
 	avatarCircle.setFill(new ImagePattern(img));
         createPage(home, "/view/Layout/NowShowingView.fxml");
+        CreateManagementMenu();
     }    
     public void SetUser(String userID){
         this.labelUsername.setText(userID);
@@ -67,25 +76,7 @@ public class MainViewController implements Initializable {
     public AnchorPane getPanel(){
         return this.rootPanel;
     }
-    @FXML
-    private void loadNowShowing(MouseEvent event) throws IOException {
-        if(MainViewController.getInstance().rootPanel.getChildren().get(0) == null)
-            MainViewController.getInstance().createPage(home, "/view/Layout/NowShowingView.fxml");
-        else
-            MainViewController.getInstance().rootPanel.getChildren().get(0).toFront();
-    }
 
-    @FXML
-    private void loadComingSoon(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/Layout/ComingSoonView.fxml"));
-	rootPanel.getChildren().setAll(pane);
-    }
-
-    @FXML
-    private void loadAccountMng(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/Layout/AccountManagement.fxml"));
-	rootPanel.getChildren().setAll(pane);
-    }
     public void setNode(Node node){
       //rootPanel.getChildren().remove(rootPanel.getChildren().size()-1);
         rootPanel.getChildren().add((Node)node);
@@ -108,5 +99,89 @@ public class MainViewController implements Initializable {
             e.printStackTrace();
         }
         return fxmlLoader;
+    }
+    public void CreateManagementMenu(){
+        JFXButton btnManagement = CreateButton("Management");
+        btnManagement.setButtonType(JFXButton.ButtonType.RAISED);
+        MaterialDesignIconView mngIcon = new MaterialDesignIconView(MaterialDesignIcon.BRIEFCASE_DOWNLOAD);
+        mngIcon.setId(".glyph-icon");
+        btnManagement.setGraphic(mngIcon);
+        btnManagement.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                if(expander == 0)
+                {
+                    MaterialDesignIconView mngIcon = new MaterialDesignIconView(MaterialDesignIcon.BRIEFCASE_UPLOAD);
+                    mngIcon.setId(".glyph-icon");
+                    btnManagement.setGraphic(mngIcon);
+                    expander = 1;
+                }
+                else{
+                    MaterialDesignIconView mngIcon = new MaterialDesignIconView(MaterialDesignIcon.BRIEFCASE_DOWNLOAD);
+                    mngIcon.setId(".glyph-icon");
+                    btnManagement.setGraphic(mngIcon);
+                    expander = 0;
+                }
+            }
+        });
+   
+        JFXButton btnMovieManagement = CreateButton("Movie Management");
+        btnMovieManagement.setButtonType(JFXButton.ButtonType.RAISED);
+        MaterialDesignIconView movieMngIcon = new MaterialDesignIconView(MaterialDesignIcon.FILM);
+        movieMngIcon.setId(".glyph-icon");
+        btnMovieManagement.setGraphic(movieMngIcon);
+        
+        JFXButton btnAccountManagement = CreateButton("Account Management");
+        btnAccountManagement.setButtonType(JFXButton.ButtonType.RAISED);
+        MaterialDesignIconView accountMngIcon = new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT_BOX);
+        accountMngIcon.setId(".glyph-icon");
+        btnAccountManagement.setGraphic(accountMngIcon);
+        
+        JFXButton btnBillManagement = CreateButton("Bill Management");
+        btnBillManagement.setButtonType(JFXButton.ButtonType.RAISED);
+        MaterialDesignIconView billIcon = new MaterialDesignIconView(MaterialDesignIcon.CLIPBOARD_TEXT);
+        billIcon.setId(".glyph-icon");
+        btnBillManagement.setGraphic(billIcon);
+        
+        JFXButton btnRoomManagement = CreateButton("Room Management");
+        btnRoomManagement.setButtonType(JFXButton.ButtonType.RAISED);
+        MaterialDesignIconView roomIcon = new MaterialDesignIconView(MaterialDesignIcon.PRESENTATION_PLAY);
+        roomIcon.setId(".glyph-icon");
+        btnRoomManagement.setGraphic(roomIcon);
+        
+        nodeListMng.addAnimatedNode(btnManagement);
+        nodeListMng.addAnimatedNode(btnMovieManagement);
+        nodeListMng.addAnimatedNode(btnAccountManagement);
+        nodeListMng.addAnimatedNode(btnBillManagement);
+        nodeListMng.addAnimatedNode(btnRoomManagement);
+        
+    }
+    public JFXButton CreateButton(String text){
+        JFXButton btn = new JFXButton(text);
+        btn.setMinSize(300, 70);
+        btn.setMaxSize(300, 70);
+        btn.setAlignment(Pos.BASELINE_LEFT);
+        btn.setWrapText(true);
+        btn.setFont(new Font(20) );
+        btn.setTextFill(Color.WHITE);
+        return btn;
+    }
+    @FXML
+    private void loadNowShowing(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/Layout/NowShowingView.fxml"));
+	rootPanel.getChildren().setAll(pane);
+        GeneralFuntion.FitChildContent(pane);
+    }
+
+    @FXML
+    private void loadComingSoon(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/Layout/ComingSoonView.fxml"));
+	rootPanel.getChildren().setAll(pane);
+        GeneralFuntion.FitChildContent(pane);
+    }
+
+    @FXML
+    private void loadAccountMng(ActionEvent event) throws IOException {
+        //AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/Layout/AccountManagement.fxml"));
+	//rootPanel.getChildren().setAll(pane);
     }
 }

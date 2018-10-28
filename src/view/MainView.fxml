@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.shape.*?>
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXNodesList?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1500.0" styleClass="parent" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1500.0" styleClass="other" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
     <stylesheets>
         <URL value="@style.css" />
     </stylesheets>
@@ -18,60 +20,48 @@
          <children>
             <AnchorPane prefHeight="75.0" prefWidth="300.0">
                <children>
-                  <Circle fx:id="avatarCircle" fill="DODGERBLUE" layoutX="49.0" layoutY="38.0" radius="38.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label fx:id="labelUsername" layoutX="115.0" layoutY="14.0" prefHeight="30.0" prefWidth="174.0" text="User Name" textFill="WHITE">
+                  <Circle fx:id="avatarCircle" fill="DODGERBLUE" layoutX="42.0" layoutY="38.0" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="labelUsername" layoutX="92.0" layoutY="14.0" prefHeight="30.0" prefWidth="174.0" text="User Name" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
                   </Label>
-                  <Label layoutX="115.0" layoutY="38.0" prefHeight="30.0" prefWidth="174.0" text="Type" textFill="WHITE" />
+                  <Label layoutX="92.0" layoutY="38.0" prefHeight="30.0" prefWidth="174.0" text="Type" textFill="WHITE" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="btnNowShowing" onMouseClicked="#loadNowShowing" prefHeight="70.0" prefWidth="300.0">
-               <children>
-                  <Label layoutX="40.0" layoutY="20.0" prefHeight="30.0" prefWidth="220.0" text="Now Showing" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="btnComingSoon" onMouseClicked="#loadComingSoon" prefHeight="70.0" prefWidth="300.0">
-               <children>
-                  <Label layoutX="40.0" layoutY="20.0" prefHeight="30.0" prefWidth="220.0" text="Coming Soon" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="70.0" prefWidth="300.0">
-               <children>
-                  <Label layoutX="40.0" layoutY="20.0" prefHeight="30.0" prefWidth="220.0" text="Member Management" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="btnAccountMng" onMouseClicked="#loadAccountMng" prefHeight="70.0" prefWidth="300.0">
-               <children>
-                  <Label layoutX="40.0" layoutY="20.0" prefHeight="30.0" prefWidth="220.0" text="Account Managenent" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="70.0" prefWidth="300.0">
-               <children>
-                  <Label layoutX="40.0" layoutY="20.0" prefHeight="30.0" prefWidth="220.0" text="Statistict" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
+            <AnchorPane prefHeight="42.0" prefWidth="600.0" />
+            <JFXButton fx:id="btnNowShowing" alignment="BASELINE_LEFT" onAction="#loadNowShowing" prefHeight="70.0" prefWidth="300.0" text="Now Showing" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <MaterialDesignIconView fill="WHITE" glyphName="THEATER" size="30" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnComingSoon" alignment="BASELINE_LEFT" onAction="#loadComingSoon" prefHeight="70.0" prefWidth="300.0" text="Coming Soon" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <MaterialDesignIconView fill="WHITE" glyphName="YOUTUBE_PLAY" size="30" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnAccountMng1" alignment="BASELINE_LEFT" onAction="#loadAccountMng" prefHeight="70.0" prefWidth="300.0" text="Statistict       " textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <graphic>
+                  <MaterialDesignIconView fill="WHITE" glyphName="CHART_AREASPLINE" size="30" />
+               </graphic>
+            </JFXButton>
+            <JFXNodesList fx:id="nodeListMng" alignment="CENTER" prefHeight="70.0" prefWidth="300.0">
+               <VBox.margin>
+                  <Insets left="60.0" />
+               </VBox.margin>
+            </JFXNodesList>
          </children>
       </VBox>
       <AnchorPane fx:id="rootPanel" layoutX="300.0" prefHeight="801.0" prefWidth="898.0" styleClass="parent" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0" />

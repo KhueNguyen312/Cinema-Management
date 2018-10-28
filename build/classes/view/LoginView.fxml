@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.image.*?>
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="723.0" prefWidth="1085.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginViewController">
+<AnchorPane prefHeight="723.0" prefWidth="1085.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginViewController">
    <children>
       <AnchorPane layoutX="642.0" layoutY="162.0" prefHeight="400.0" prefWidth="350.0" style="-fx-background-color: #F2ECE7;">
          <children>
@@ -27,6 +28,8 @@
                </font>
             </Label>
             <Label fx:id="lbMessange" alignment="CENTER" layoutX="49.0" layoutY="327.0" prefHeight="31.0" prefWidth="255.0" textFill="#fa5316eb" textOverrun="CLIP" />
+            <MaterialDesignIconView glyphName="ACCOUNT" layoutX="29.0" layoutY="186.0" size="1" styleClass="glyph-icon-2" />
+            <MaterialDesignIconView glyphName="KEY" layoutX="29.0" layoutY="231.0" size="1" styleClass="glyph-icon-2" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="79.0" layoutY="243.0" prefHeight="238.0" prefWidth="409.0">

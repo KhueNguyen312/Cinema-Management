@@ -16,3 +16,13 @@
     -fx-background-image: url("../Imgs/CinemaBackground.JPG");
     -fx-background-size: 100% 100%; 
 }
+.glyph-icon{
+    -fx-font-size: 30px;
+    -fx-font-family: "Material Design Icons";
+    -fx-fill: white;
+}
+.glyph-icon-2{
+    -fx-font-family: "Material Design Icons";
+    -fx-font-size: 20px;
+    -fx-fill: black;
+}
