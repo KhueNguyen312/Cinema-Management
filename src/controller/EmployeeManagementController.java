@@ -30,13 +30,16 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 
 /**
  *
  * @author MyPC
  */
-public class EmployeeManagementController implements Initializable{
+public class EmployeeManagementController implements Initializable {
 
     @FXML
     private Button btnAdd;
@@ -62,10 +65,9 @@ public class EmployeeManagementController implements Initializable{
     private TableColumn<Employee, Integer> colProvince;
     @FXML
     private TableColumn<Employee, String> colAddress;
+    private AnchorPane rootPanel;
     @FXML
-    private TableColumn<Employee, Date> colCreateAt;
-    @FXML
-    private TableColumn<Employee, Date> colUpdateAt;
+    private AnchorPane rootpanel;
 
     @FXML
     private void btnAddClick(ActionEvent event) {
@@ -79,42 +81,35 @@ public class EmployeeManagementController implements Initializable{
     private void btnDeleteClick(ActionEvent event) {
     }
     private EmployeeDAO Employees;
-   ObservableList<Employee> listEmployees = FXCollections.observableArrayList();
+    List<Employee> listEmployees;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        String sql = "select * from Employees order by created_at";
-        List<Employee> list = new ArrayList<>();
-        try {
-            Class.forName(DRIVER);
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
-            System.out.println("Connected");
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                
-                listEmployees.add(new Employee(rs.getInt("ID"), rs.getString("Name"),rs.getString("Email"),
-                        rs.getString("Password"),rs.getInt("Sex"),rs.getInt("Card Number"),rs.getInt("Province"),
-                        rs.getString("Address"),rs.getDate("create at"),rs.getDate("update at")));
-            }
-//            rs.close();
-//            con.close();
-        } catch (ClassNotFoundException | SQLException ex) {
-            ex.printStackTrace();
-        }
-       colID.setCellFactory(new PropertyValueFactory("ID"));
-       colName.setCellFactory(new PropertyValueFactory("Name"));
-       colEmail.setCellFactory(new PropertyValueFactory("Email"));
-       colPass.setCellFactory(new PropertyValueFactory("Password"));
-      colSex.setCellFactory(new PropertyValueFactory("Sex"));
-       colCardNumber.setCellFactory(new PropertyValueFactory("Card Number"));
-       colProvince.setCellFactory(new PropertyValueFactory("Province"));
-       colAddress.setCellFactory(new PropertyValueFactory("Address"));
-      colCreateAt.setCellFactory(new PropertyValueFactory("create at"));
-       colUpdateAt.setCellFactory(new PropertyValueFactory("update at"));
+
+        colID.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("colID"));
+        colName.setCellValueFactory(new PropertyValueFactory<Employee, String>("colName"));
+        colEmail.setCellValueFactory(new PropertyValueFactory<Employee, String>("colEmail"));
+        colPass.setCellValueFactory(new PropertyValueFactory<Employee, String>("colPass"));
+        colSex.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("colSex"));
+        colCardNumber.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("colCardNumber"));
+        colProvince.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("colProvince"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<Employee, String>("colAddress"));
+//        colCreateAt.setCellValueFactory(new PropertyValueFactory<Employee, Timestamp>("colCreateAt"));
+//        colUpdateAt.setCellValueFactory(new PropertyValueFactory<Employee, Timestamp>("colUpdateAt"));
+        Employees = new EmployeeDAO();
+        listEmployees = Employees.getEmployee();
+        FlowPane container = new FlowPane();
         
-        tbEmployee.setItems(listEmployees);
+        ObservableList<Employee> list = FXCollections.observableArrayList(listEmployees);
+        tbEmployee.setItems(list);
+        tbEmployee.getColumns().addAll(colID, colName, colEmail, colPass, colSex, colCardNumber, colProvince, colAddress);
+        
+        
         
 
+//        rootpanel.setPadding(new Insets(5));
+//        rootpanel.getChildren().add(tbEmployee);
+//        
     }
-    
+
 }
