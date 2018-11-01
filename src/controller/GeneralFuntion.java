@@ -5,13 +5,14 @@
  */
 package controller;
 
-import java.awt.image.BufferedImage;
-import javafx.embed.swing.SwingFXUtils;
+import com.jfoenix.controls.*;
 import javafx.scene.Node;
-import javafx.scene.image.Image;
-import javafx.scene.image.WritableImage;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import static javax.swing.Spring.width;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 /**
  *
@@ -23,5 +24,42 @@ public final class GeneralFuntion {
         AnchorPane.setTopAnchor(child, 0.0);
         AnchorPane.setLeftAnchor(child, 0.0);
         AnchorPane.setRightAnchor(child, 0.0);
+    }
+    public static void createNotifyDialog(AnchorPane rootPane,String header,String text,boolean loadTheFirstPage){
+        rootPane.setVisible(true);
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Text(header));
+        JFXButton button = new JFXButton("Close");
+        content.setPrefSize(500, 250);
+        Label lbNotify = new Label(text);
+        lbNotify.setWrapText(true);
+        lbNotify.setStyle("-fx-font-weight: bold");
+        lbNotify.setFont(Font.font("Arial", 20));
+        lbNotify.setTextFill(Color.BLACK);
+        content.setBody(lbNotify);
+        StackPane stackPane = new StackPane();
+        stackPane.autosize();
+        JFXDialog confirmModal = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.TOP);
+
+        button.setFont(new Font(15));
+        button.setStyle("-fx-background-color: #000000;-fx-font-weight: bold");
+        button.setTextFill(Color.WHITE);
+        button.setPrefSize(100, 50);
+        button.setOnAction(e -> {
+            confirmModal.close();
+            if(loadTheFirstPage){
+                AnchorPane scene = new AnchorPane();
+                MainViewController.getInstance().createPage(scene, "/view/Layout/NowShowingView.fxml");
+            }
+
+        });
+        content.setActions(button);
+        rootPane.getChildren().add(stackPane);
+        FitChildContent(stackPane);
+        confirmModal.show();
+        confirmModal.setOnDialogClosed(e -> {
+            rootPane.getChildren().remove(rootPane.getChildren().size() - 1);
+            rootPane.setVisible(false);
+        });
     }
 }

@@ -78,17 +78,16 @@ public class MainViewController implements Initializable {
     }
 
     public void setNode(Node node){
-      //rootPanel.getChildren().remove(rootPanel.getChildren().size()-1);
         rootPanel.getChildren().add((Node)node);
         GeneralFuntion.FitChildContent(node);
         //effection
-        FadeTransition ft = new FadeTransition(Duration.millis(1000));
-        ft.setNode(node);
-        ft.setFromValue(0.1);
-        ft.setToValue(1);
-        ft.setCycleCount(1);
-        ft.setAutoReverse(false);
-        ft.play();
+//        FadeTransition ft = new FadeTransition(Duration.millis(1000));
+//        ft.setNode(node);
+//        ft.setFromValue(0.1);
+//        ft.setToValue(1);
+//        ft.setCycleCount(1);
+//        ft.setAutoReverse(false);
+//        ft.play();
     }
     public FXMLLoader createPage(AnchorPane pane,String loc){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(loc));

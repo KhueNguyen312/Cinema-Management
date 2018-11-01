@@ -21,6 +21,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import model.Movies;
 import model.MoviesDAO;
@@ -48,7 +49,7 @@ public class NowShowingViewController implements Initializable {
         List<Movies> listMovies = movies.getMovies();
         FlowPane container = new FlowPane();
         for( Movies movie:listMovies){
-            VBox sampleFilm = CreateInfoFilm(movie.getName(), movie.getImg(),movie.getDirector(),movie.getCast(),movie.getGenre(),movie.getReleaseDate(),movie.getDuaration(),movie.getLanguage(),movie.getRate());
+            VBox sampleFilm = CreateInfoFilm(movie);
             container.setVgap(20);
             container.setHgap(50);
             container.setPrefWidth(pnShowInfo.getPrefWidth());
@@ -61,9 +62,9 @@ public class NowShowingViewController implements Initializable {
         
         
     }
-    public VBox CreateInfoFilm(String name,String imgUrl,String director,String cast,String genre,Date rDate,int runningTime,String lang,String rated){
+    public VBox CreateInfoFilm(Movies movie){
         VBox InfoPanel = new VBox();
-        Image img = new Image(imgUrl);
+        Image img = new Image(movie.getImg());
         ImageView imgView = new ImageView(img);
         imgView.setFitHeight(250);
         imgView.setFitWidth(200);
@@ -73,14 +74,15 @@ public class NowShowingViewController implements Initializable {
                 //FXMLLoader fxmlLoader = new FXMLLoader();
                 FXMLLoader fxmlLoader = MainViewController.getInstance().createPage(NextScene, "/view/Layout/FilmBookingView.fxml");
                 //FilmBookingViewController controller = (FilmBookingViewController)fxmlLoader.getController();
-                fxmlLoader.<FilmBookingViewController>getController().SetInfo(imgUrl, name, director, cast, genre, rDate, runningTime, lang, rated);
+                fxmlLoader.<FilmBookingViewController>getController().SetInfo(movie);
                 
             }
         });
         
-        Label label = new Label(name);
+        Label label = new Label(movie.getName());
         label.setWrapText(true);
         label.setFont(Font.font("Arial", 18));
+        label.setTextFill(Color.WHITE);
         InfoPanel.setPrefSize(200, 400);
         InfoPanel.getChildren().addAll(imgView,label);
         return InfoPanel;

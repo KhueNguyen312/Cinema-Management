@@ -9,8 +9,12 @@
 	-fx-background-color: #191C1F
 }
 .scroll-pane {
-   -fx-background: #34343B;
-   -fx-border-color: #34343B;
+/*   -fx-background: #34343B;
+   -fx-border-color: #34343B;*/
+-fx-background-color: transparent;
+}
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
 }
 .seat-selection {
     -fx-background-image: url("../Imgs/CinemaBackground.JPG");
@@ -25,4 +29,7 @@
     -fx-font-family: "Material Design Icons";
     -fx-font-size: 20px;
     -fx-fill: black;
+}
+.button-hover{
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
 }

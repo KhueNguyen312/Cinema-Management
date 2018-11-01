@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="775.0" prefWidth="1207.0" styleClass="seat-selection" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SeatSelectionViewController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="1060.0" prefWidth="1360.0" styleClass="seat-selection" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SeatSelectionViewController">
    <children>
-      <JFXButton layoutX="304.0" layoutY="156.0" prefHeight="42.0" prefWidth="538.0" style="-fx-background-color: #D88A04;" text="SCREEN" textFill="WHITE" AnchorPane.leftAnchor="304.0" AnchorPane.topAnchor="156.0">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </JFXButton>
-      <Label alignment="CENTER" layoutX="348.0" layoutY="55.0" prefHeight="58.0" prefWidth="408.0" text="SAMPLE MOVIE" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="348.0" AnchorPane.rightAnchor="348.0" AnchorPane.topAnchor="55.0">
+      <Label fx:id="lbMovieName" alignment="CENTER" layoutX="348.0" layoutY="55.0" prefHeight="58.0" prefWidth="408.0" text="SAMPLE MOVIE" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="348.0" AnchorPane.rightAnchor="348.0" AnchorPane.topAnchor="55.0">
          <font>
             <Font size="40.0" />
          </font>
@@ -33,34 +34,182 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <HBox layoutX="329.0" layoutY="660.0" prefHeight="42.0" prefWidth="511.0" AnchorPane.leftAnchor="329.0" AnchorPane.rightAnchor="367.0" AnchorPane.topAnchor="660.0">
+      <JFXButton fx:id="btnNext" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1088.0" layoutY="53.0" onAction="#loadProduct" prefHeight="62.0" prefWidth="223.0" text="Next Screen" textFill="#929292" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="53.0">
+         <font>
+            <Font size="21.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="48.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+               <image>
+                  <Image url="@../../Imgs/img_69772.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <AnchorPane fx:id="pnDetail" layoutX="140.0" layoutY="846.0" opacity="0.83" prefHeight="200.0" prefWidth="1037.0" style="-fx-background-color: #2D2C25;" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="183.0">
          <children>
-            <JFXButton contentDisplay="GRAPHIC_ONLY" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #472B34;" />
-            <Label prefHeight="42.0" prefWidth="93.0" text="   booked" textAlignment="RIGHT" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <JFXButton contentDisplay="GRAPHIC_ONLY" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #91268F;" />
-            <Label prefHeight="42.0" prefWidth="92.0" text="   selected" textAlignment="RIGHT" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <JFXButton contentDisplay="GRAPHIC_ONLY" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #3A78C3;" />
-            <Label prefHeight="42.0" prefWidth="84.0" text="   normal" textAlignment="RIGHT" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <JFXButton contentDisplay="GRAPHIC_ONLY" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #D00000;" />
-            <Label prefHeight="42.0" prefWidth="61.0" text="   VIP" textAlignment="RIGHT" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
+            <ImageView fx:id="imgMovie" fitHeight="178.0" fitWidth="146.0" layoutX="35.0" layoutY="11.0" pickOnBounds="true" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="856.0">
+               <image>
+                  <Image url="@../../Imgs/VenomPoster.jpg" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="btnConfirm" contentDisplay="GRAPHIC_ONLY" layoutX="918.0" layoutY="61.0" onAction="#loadPurchaseConfirmation" prefHeight="78.0" prefWidth="77.0" ripplerFill="BLACK" style="-fx-background-color: #ffe100;" AnchorPane.bottomAnchor="61.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="61.0">
+               <graphic>
+                  <ImageView fitHeight="83.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Imgs/booking.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <tooltip>
+                  <Tooltip text="Book" wrapText="true" />
+               </tooltip>
+            </JFXButton>
+            <VBox layoutX="284.0" layoutY="16.0" prefHeight="178.0" prefWidth="93.0" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="660.0">
+               <children>
+                  <Label prefHeight="42.0" prefWidth="93.0" text="Theater:" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="42.0" prefWidth="93.0" text="Date play:" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="42.0" prefWidth="93.0" text="Schedule:" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="42.0" prefWidth="93.0" text="Room:" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="396.0" layoutY="16.0" prefHeight="178.0" prefWidth="180.0" AnchorPane.leftAnchor="396.0" AnchorPane.rightAnchor="461.0">
+               <children>
+                  <Label fx:id="lbTheater" prefHeight="42.0" prefWidth="181.0" text="Gold Cinema" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbDatePlay" prefHeight="42.0" prefWidth="180.0" text="31/10/2018" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbSchedule" prefHeight="42.0" prefWidth="171.0" text="20:00:00" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbRoom" prefHeight="42.0" prefWidth="93.0" text="None" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="649.0" layoutY="11.0" prefHeight="178.0" prefWidth="128.0" AnchorPane.leftAnchor="649.0" AnchorPane.rightAnchor="260.0">
+               <children>
+                  <Label prefHeight="42.0" prefWidth="118.0" text="Ticket cost:" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="42.0" prefWidth="93.0" text="Combo:" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="42.0" prefWidth="93.0" text="Total cost:" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="785.0" layoutY="11.0" prefHeight="178.0" prefWidth="134.0" AnchorPane.leftAnchor="785.0" AnchorPane.rightAnchor="118.0">
+               <children>
+                  <Label fx:id="lbCost" prefHeight="42.0" prefWidth="181.0" text="0 VND" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbCombo" prefHeight="42.0" prefWidth="180.0" text="0 VND" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbTotal" prefHeight="42.0" prefWidth="171.0" text="0 VND" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
          </children>
-      </HBox>
-      <FlowPane fx:id="seatPane" layoutX="304.0" layoutY="218.0" prefHeight="381.0" prefWidth="561.0" AnchorPane.leftAnchor="304.0" AnchorPane.topAnchor="218.0" />
+      </AnchorPane>
+      <AnchorPane fx:id="pnContent" layoutY="115.0" prefHeight="617.0" prefWidth="1360.0">
+         <children>
+            <AnchorPane prefHeight="706.0" prefWidth="876.0">
+               <children>
+                  <JFXButton layoutX="149.0" layoutY="35.0" prefHeight="42.0" prefWidth="538.0" style="-fx-background-color: #D88A04;" text="SCREEN" textFill="WHITE" AnchorPane.leftAnchor="149.0" AnchorPane.rightAnchor="189.0" AnchorPane.topAnchor="35.0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <FlowPane fx:id="seatPane" layoutX="116.0" layoutY="89.0" prefHeight="381.0" prefWidth="604.0" AnchorPane.bottomAnchor="198.0" AnchorPane.leftAnchor="116.0" AnchorPane.rightAnchor="156.0" AnchorPane.topAnchor="89.0" />
+                  <HBox layoutX="162.0" layoutY="607.0" prefHeight="42.0" prefWidth="512.0" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="162.0" AnchorPane.rightAnchor="202.0" AnchorPane.topAnchor="607.0">
+                     <children>
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #472B34;" />
+                        <Label prefHeight="42.0" prefWidth="93.0" text="   booked" textAlignment="RIGHT" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #91268F;" />
+                        <Label prefHeight="42.0" prefWidth="92.0" text="   selected" textAlignment="RIGHT" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #3A78C3;" textOverrun="CLIP" wrapText="true" />
+                        <Label prefHeight="42.0" prefWidth="84.0" text="   normal" textAlignment="RIGHT" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #D00000;" />
+                        <Label prefHeight="42.0" prefWidth="61.0" text="   VIP" textAlignment="RIGHT" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="623.0" layoutX="996.0" layoutY="42.0" stroke="WHITE" strokeType="INSIDE" width="1.0" AnchorPane.rightAnchor="363.0" AnchorPane.topAnchor="42.0">
+               <effect>
+                  <Glow />
+               </effect>
+            </Rectangle>
+            <Label layoutX="1078.0" layoutY="42.0" text="Selected seat" textFill="WHITE" AnchorPane.rightAnchor="136.0" AnchorPane.topAnchor="42.0">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <VBox fx:id="pnShowSelectingSeat" alignment="TOP_CENTER" layoutX="1078.0" layoutY="78.0" prefHeight="465.0" prefWidth="146.0" spacing="5.0" />
+         </children>
+      </AnchorPane>
+      <ScrollPane fx:id="pnProductContent" layoutX="28.0" layoutY="129.0" pannable="true" prefHeight="659.0" prefWidth="1325.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="129.0" />
+      <AnchorPane fx:id="pnNotify" layoutX="54.0" layoutY="13.0" prefHeight="972.0" prefWidth="1291.0" visible="false" />
    </children>
 </AnchorPane>

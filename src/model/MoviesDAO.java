@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author stari
  */
-public class MoviesDAO implements DAO{
+public class MoviesDAO{
     private Movies createMovies(ResultSet rs){
         Movies m = new Movies();
         try {
@@ -34,17 +34,11 @@ public class MoviesDAO implements DAO{
         String sql = "Select * from movies order by release_date";
         List<Movies> list = new ArrayList<>();
         try {
-         Class.forName(DRIVER);
-         Connection con = DriverManager.getConnection(DB_URL,USER,PASS);
-         System.out.println("Connected");
-         Statement stmt = con.createStatement();
-         ResultSet rs = stmt.executeQuery(sql);
+           ResultSet rs = DBUtil.dbExecute(sql);
          while (rs.next()) {
             Movies p = createMovies(rs);
             list.add(p);
          }
-         rs.close();
-         con.close();
       } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex);
       }

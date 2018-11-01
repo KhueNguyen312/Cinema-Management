@@ -57,6 +57,7 @@ public class LoginViewController implements Initializable {
          Scene scene = new Scene(parent);
          stage.setScene(scene);
          stage.setTitle("Cinema Management");
+         stage.setMaximized(true);
          stage.show();
         }
         else{
