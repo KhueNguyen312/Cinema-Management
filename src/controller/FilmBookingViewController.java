@@ -22,10 +22,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import java.text.SimpleDateFormat;   
+import java.util.function.BinaryOperator;
+import java.util.stream.Collectors;
 import javafx.fxml.FXMLLoader;
 import model.Plan_CinemasDAO;
 import model.Plan_cinemas;
 import model.Movies;
+import model.Version;
+import model.VersionDAO;
 
 /**
  * FXML Controller class
@@ -123,12 +127,15 @@ public class FilmBookingViewController implements Initializable {
         java.util.Date date = new java.util.Date();
         
         FlowPane selectedSchedulePane = new FlowPane();
+        FlowPane versionPane = new FlowPane();
+        versionPane.setHgap(5);
+        versionPane.setVgap(5);
         selectedSchedulePane.setHgap(5);
         selectedSchedulePane.setVgap(5);
         String formatDate = new SimpleDateFormat("yyyyMMdd").format(date);
         planCinema = new Plan_CinemasDAO();
         List<Plan_cinemas> listPlanCinema = planCinema.getListPlan("SELECT * FROM `plan_cinemas` WHERE show_date ="+formatDate+" and movie_id = "+ movieID );
-        displaySchedure(listPlanCinema, selectedSchedulePane);
+        displaySchedure(listPlanCinema, selectedSchedulePane,versionPane);
         
         FlowPane contentPane = new FlowPane();
         contentPane.setHgap(5);
@@ -139,31 +146,38 @@ public class FilmBookingViewController implements Initializable {
             String formatDate_1 = new SimpleDateFormat("yyyyMMdd").format(date);
             btnDate.setOnAction((event) -> {
                 selectedSchedulePane.getChildren().clear();
+                versionPane.getChildren().clear();
                 for(int j =0;j<14;j++){
                     contentPane.getChildren().get(j).setDisable(false);
                 }
                 btnDate.setDisable(true);
                 List<Plan_cinemas> listSchedureOnDayPlay = planCinema.getListPlan("SELECT * FROM `plan_cinemas` WHERE show_date ="+formatDate_1+" and movie_id = "+ movieID );
-                displaySchedure(listSchedureOnDayPlay,selectedSchedulePane);
+                
+                
+                displaySchedure(listSchedureOnDayPlay,selectedSchedulePane,versionPane);
                 
             });
-            
             contentPane.getChildren().add(btnDate);
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);
             cal.add(Calendar.DATE, 1);
             date = cal.getTime();
         }
+        contentPane.getChildren().get(0).setDisable(true);
         Label label = new Label();
         label.setText("Selected schedule");
         label.setStyle("-fx-font-weight: bold");
         label.setFont(new Font(40) );
         label.setTextFill(Color.BLACK);
         
-        SchedurePane.getChildren().add(contentPane);
+        Label lbVer = new Label();
+        lbVer.setText("Selected version");
+        lbVer.setStyle("-fx-font-weight: bold");
+        lbVer.setFont(new Font(40) );
+        lbVer.setTextFill(Color.BLACK);
+        
         SchedurePane.setSpacing(50);
-        SchedurePane.getChildren().add(label);
-        SchedurePane.getChildren().add(selectedSchedulePane);
+        SchedurePane.getChildren().addAll(contentPane,lbVer,versionPane,label,selectedSchedulePane);
         
         return SchedurePane;
     }
@@ -172,7 +186,7 @@ public class FilmBookingViewController implements Initializable {
         button.setOnMouseEntered(e -> button.setStyle("-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;-fx-font-weight: bold"));
         button.setOnMouseExited(e -> button.setStyle("-fx-background-color: #F9F6EC"));
     }
-    public void displaySchedure(List<Plan_cinemas> listSchedure,FlowPane pane){
+    public void displaySchedure(List<Plan_cinemas> listSchedure,FlowPane pane,FlowPane versionPane){
         if(listSchedure.isEmpty()){
             Label notifyLabel = new Label();
             notifyLabel.setText("Sorry there is no showtime on this day, please select another day");
@@ -182,19 +196,67 @@ public class FilmBookingViewController implements Initializable {
             pane.getChildren().add(notifyLabel);
         }
         else{
-            for(Plan_cinemas plan:listSchedure){
-                JFXButton button = createInfoButton(plan.getTime_begin().toString(), 120, 60);
-                setStatusButton(button);
-                button.setOnAction((event) -> {
-                    rootbookingPanel.getChildren().remove(rootbookingPanel.getChildren().size()-1);
-                    //MainViewController.getInstance().createPage(moviesPane, "/view/Layout/SeatSelectionView.fxml");
-                    FXMLLoader fxmlLoader = MainViewController.getInstance().createPage(moviesPane, "/view/Layout/SeatSelectionView.fxml");
-                    fxmlLoader.<SeatSelectionViewController>getController().setStatusSeat(lbName.getText(),plan.getId());
-                    fxmlLoader.<SeatSelectionViewController>getController().setInfo(posterFilm.getImage(),plan);
-                });
-                pane.getChildren().add(button);
+            List<Integer> listVerID = new ArrayList<Integer>();
+            int popularVer = 1;
+            //add all this's movie version play on this day to list
+            for (Plan_cinemas plan : listSchedure) {
+                listVerID.add(plan.getType_projector_id());
             }
+            //Find popular version most appearance
+            popularVer = listVerID.stream().reduce(BinaryOperator.maxBy((o1, o2) -> Collections.frequency(listVerID, o1)
+                    - Collections.frequency(listVerID, o2))).orElse(null);
+            //remove all duplicate id
+            List<Integer> listID = listVerID.stream().distinct().collect(Collectors.toList());
+            
+            String sql = "SELECT * FROM `type_projectors` WHERE ";
+            for(int i = 0;i<listID.size();i++){
+                if(i == listID.size()-1){
+                    sql += "id = " + listID.get(i);
+                }else{
+                    sql+= "id = "+ listID.get(i)+ " or ";
+                }
+            }
+            VersionDAO versionDAO = new VersionDAO();
+            List<Version> listVer = versionDAO.getListVersionMovie(sql);
+            final int tmp = popularVer;
+            Version pVer = listVer.stream().filter(customer -> customer.getId() == tmp)
+                    .findAny()
+                    .orElse(null);
+            if(listVer.get(0).getId() != popularVer && listVerID.contains(popularVer)){
+                Collections.swap(listVer, 0,listVerID.indexOf(pVer));
+            }
+            for (Version ver : listVer) {
+                JFXButton button = createInfoButton(ver.getName(),150,60);
+                setStatusButton(button);
+                button.setOnAction((e) -> {
+                    pane.getChildren().clear();
+                    displaySchedureFromVersion(listSchedure,pane,ver.getId());
+                    for(int i = 0;i<versionPane.getChildren().size();i++){
+                        versionPane.getChildren().get(i).setDisable(false);
+                    }
+                    button.setDisable(true);
+                });
+                versionPane.getChildren().add(button);
+            }
+            versionPane.getChildren().get(0).setDisable(true);
+            displaySchedureFromVersion(listSchedure,pane,popularVer);
         }
+    }
+    private void displaySchedureFromVersion(List<Plan_cinemas> listSchedure,FlowPane pane,int verID){
+        for(Plan_cinemas plan:listSchedure){
+                if (plan.getType_projector_id() == verID) {
+                    JFXButton button = createInfoButton(plan.getTime_begin().toString(), 120, 60);
+                    setStatusButton(button);
+                    button.setOnAction((event) -> {
+                        rootbookingPanel.getChildren().remove(rootbookingPanel.getChildren().size() - 1);
+                        //MainViewController.getInstance().createPage(moviesPane, "/view/Layout/SeatSelectionView.fxml");
+                        FXMLLoader fxmlLoader = MainViewController.getInstance().createPage(moviesPane, "/view/Layout/SeatSelectionView.fxml");
+                        fxmlLoader.<SeatSelectionViewController>getController().setStatusSeat(lbName.getText(), plan.getId());
+                        fxmlLoader.<SeatSelectionViewController>getController().setInfo(posterFilm.getImage(), plan);
+                    });
+                    pane.getChildren().add(button);
+                }
+            }
     }
     public JFXButton createInfoButton(String text,int width,int height){
         JFXButton btnInfo = new JFXButton(text);

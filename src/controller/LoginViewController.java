@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +21,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import model.Employee;
+import model.EmployeeDAO;
 
 /**
  * FXML Controller class
@@ -47,12 +50,15 @@ public class LoginViewController implements Initializable {
 
     @FXML
     private void login(ActionEvent event) throws IOException {
-        if (tbUserName.getText().equals("Syaoran") && passwordBox.getText().equals("1")){
+        EmployeeDAO employeeDAO = new EmployeeDAO();
+        String sql = "SELECT * FROM `employees` WHERE `email`="+"'"+ tbUserName.getText()+"'"+ "and `password` ="+ "'"+passwordBox.getText()+"'";
+        List<Employee> list = employeeDAO.getListEmployee(sql);
+        if (list.size()>0){
          ((Node)event.getSource()).getScene().getWindow().hide();
          FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/MainView.fxml"));
          Parent parent = fxmlLoader.load();
          MainViewController main = fxmlLoader.<MainViewController>getController();
-         main.SetUser(tbUserName.getText());
+         main.SetUser(tbUserName.getText(),list.get(0).getId());
          Stage stage = new Stage();
          Scene scene = new Scene(parent);
          stage.setScene(scene);

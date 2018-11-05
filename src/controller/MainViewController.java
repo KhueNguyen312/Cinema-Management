@@ -53,6 +53,16 @@ public class MainViewController implements Initializable {
     @FXML
     private JFXNodesList nodeListMng;
     private int expander = 0;
+    private int userID;
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+    
     public MainViewController(){
         instance = this;
     }
@@ -70,8 +80,9 @@ public class MainViewController implements Initializable {
         createPage(home, "/view/Layout/NowShowingView.fxml");
         CreateManagementMenu();
     }    
-    public void SetUser(String userID){
-        this.labelUsername.setText(userID);
+    public void SetUser(String userName,int userID){
+        this.labelUsername.setText(userName);
+        this.userID = userID;
     }
     public AnchorPane getPanel(){
         return this.rootPanel;

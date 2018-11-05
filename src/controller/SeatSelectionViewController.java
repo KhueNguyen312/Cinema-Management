@@ -36,6 +36,7 @@ import model.InvoicesDAO;
 import model.Plan_cinemas;
 import model.Product;
 import model.ProductDAO;
+import model.RoomDAO;
 import model.Tickets;
 import model.TicketsDAO;
 
@@ -132,9 +133,16 @@ public class SeatSelectionViewController implements Initializable {
     }
     
     public void setInfo(Image img,Plan_cinemas plan){
+        RoomDAO roomDAO = new RoomDAO();
+        String roomName = null;
+        try {
+            roomName = roomDAO.getListRoom("SELECT * FROM `rooms` WHERE `id` = " + plan.getRoom_id()).get(0).getName();
+        } catch (Exception e) {
+            roomName = "None";
+        }
         imgMovie.setImage(img);
         lbDatePlay.setText(plan.getShow_date().toString());
-        lbRoom.setText(String.valueOf(plan.getRoom_id()));
+        lbRoom.setText(roomName);
         lbSchedule.setText(plan.getTime_begin().toString());
         this.plan = plan;
     }
@@ -326,7 +334,7 @@ public class SeatSelectionViewController implements Initializable {
         button.setPrefSize(100, 50);
         button.setOnAction(e -> {
             try {
-                insertDataToDB(1,userID);
+                insertDataToDB(MainViewController.getInstance().getUserID(),userID); // one is employeeID and one is customer
                 GeneralFuntion.createNotifyDialog(pnNotify, "Notify", "booking tickets successfully",true);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(SeatSelectionViewController.class.getName()).log(Level.SEVERE, null, ex);
@@ -483,7 +491,6 @@ public class SeatSelectionViewController implements Initializable {
         int total = Integer.parseInt(lbTotal.getText().replaceAll(regex, ""));
         InvoicesDAO invoiceDAO = new InvoicesDAO();
         InvoiceDetailDAO invoiceDetailDAO = new InvoiceDetailDAO();
-        java.util.Date date = new java.util.Date();
         java.sql.Date sqlDate = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
         
         Invoices invoice = new Invoices(total,sqlDate,employeeID,userID,1);
