@@ -17,6 +17,7 @@ public class Movies {
     private String name;
     private String image;
     private int duration;
+    private String linkTrailer;
     private String director;
     private String cast;
     private String genre;
@@ -24,71 +25,101 @@ public class Movies {
     private Date release_date;
     private String rated;
     private String content;
-    
-    public int getID(){
+
+    public int getId() {
         return id;
     }
-    public void setID(int id){
-        this.id = id;
-    }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
-    public void setName(String name){
-        this.name = name;
-    }
-    public String getImg(){
+
+    public String getImage() {
         return image;
     }
-    public void setImg(String img){
-        this.image = img;
-    }
-    public int getDuaration(){
+
+    public int getDuration() {
         return duration;
     }
-    public void setDuration(int duaration){
-        this.duration = duaration;
+
+    public String getLinkTrailer() {
+        return linkTrailer;
     }
-    public String getDirector (){
+
+    public String getDirector() {
         return director;
     }
-    public void setDirector(String director){
-        this.director = director;
-    }
-    public String getCast(){
+
+    public String getCast() {
         return cast;
     }
-    public void setCast(String cast){
-        this.cast = cast;
-    }
-    public String getGenre(){
+
+    public String getGenre() {
         return genre;
     }
-    public void setGenre(String genre){
-        this.genre = genre;
-    }
-    public String getLanguage(){
+
+    public String getLanguage() {
         return language;
     }
-    public void setLanguage(String language){
-        this.language = language;
-    }
-    public Date getReleaseDate(){
+
+    public Date getRelease_date() {
         return release_date;
     }
-    public void setReleaseDate(Date rDate){
-        this.release_date = rDate;
-    }
-    public String getRate(){
+
+    public String getRated() {
         return rated;
     }
-    public void setRated(String rated){
-        this.rated = rated;
-    }
-    public String getContent(){
+
+    public String getContent() {
         return content;
     }
-    public void setContent(String content){
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public void setLinkTrailer(String linkTrailer) {
+        this.linkTrailer = linkTrailer;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public void setCast(String cast) {
+        this.cast = cast;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public void setRelease_date(Date release_date) {
+        this.release_date = release_date;
+    }
+
+    public void setRated(String rated) {
+        this.rated = rated;
+    }
+
+    public void setContent(String content) {
         this.content = content;
     }
+   
 }

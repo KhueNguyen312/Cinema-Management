@@ -64,7 +64,7 @@ public class NowShowingViewController implements Initializable {
     }
     public VBox CreateInfoFilm(Movies movie){
         VBox InfoPanel = new VBox();
-        Image img = new Image(movie.getImg());
+        Image img = new Image(movie.getImage());
         ImageView imgView = new ImageView(img);
         imgView.setFitHeight(250);
         imgView.setFitWidth(200);

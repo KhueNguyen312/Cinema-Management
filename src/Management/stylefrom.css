@@ -9,29 +9,8 @@
 	-fx-background-color: #191C1F
 }
 .scroll-pane {
-/*   -fx-background: #34343B;
-   -fx-border-color: #34343B;*/
--fx-background-color: transparent;
-}
-.scroll-pane > .viewport {
-   -fx-background-color: transparent;
-}
-.seat-selection {
-    -fx-background-image: url("../Imgs/CinemaBackground.JPG");
-    -fx-background-size: 100% 100%; 
-}
-.glyph-icon{
-    -fx-font-size: 30px;
-    -fx-font-family: "Material Design Icons";
-    -fx-fill: white;
-}
-.glyph-icon-2{
-    -fx-font-family: "Material Design Icons";
-    -fx-font-size: 20px;
-    -fx-fill: black;
-}
-.button-hover{
-    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+   -fx-background: #34343B;
+   -fx-border-color: #34343B;
 }
 .buttonnormal {
 -fx-background-color: 
@@ -66,7 +45,7 @@
         -fx-font-size: 16px;
 }
 .anchorpanel{
-    -fx-background-image: url("../img/label.jpg");
+    -fx-background-image: url("../Imgs/label.jpg");
     -fx-background-size: 100% 100%;
     
 }
@@ -96,4 +75,19 @@
 .comboBox .cell{
     -fx-text-fill: white;
     -fx-font: 16px "Arial";
+}
+.glyph-icon{
+  
+    -fx-font-family: "Material Design Icons";
+    -fx-fill: white;
+}
+.date-picker:editable > .arrow-button > * {
+    -fx-opacity: 0; /* Set the node in the button to be visible */
+     -fx-text-fill: white;
+}
+.date-picker > .arrow-button {
+    
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center; /* Put the icon in the center */
+     -fx-text-fill: white;
 }

@@ -73,17 +73,17 @@ public class FilmBookingViewController implements Initializable {
         // TODO
     }
     public void SetInfo(Movies movie){
-        Image img = new Image(movie.getImg());
+        Image img = new Image(movie.getImage());
         posterFilm.setImage(img);
         lbName.setText(movie.getName());
         lbDirector.setText(movie.getDirector());
         lbCast.setText(movie.getCast());
         lbGenre.setText(movie.getGenre());
         lbLang.setText(movie.getLanguage());
-        lbRunningTime.setText(String.valueOf(movie.getDuaration()));
-        lbRDate.setText(movie.getReleaseDate().toString());
-        lbRated.setText(movie.getRate());
-        movieID = movie.getID();
+        lbRunningTime.setText(String.valueOf(movie.getDuration()));
+        lbRDate.setText(movie.getRelease_date().toString());
+        lbRated.setText(movie.getRated());
+        movieID = movie.getId();
     }
     public AnchorPane moviesPane;    
     @FXML
