@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.HyperlinkLabel?>
+
+<AnchorPane id="AnchorPane" prefHeight="752.0" prefWidth="1066.0" styleClass="other" stylesheets="@stylefrom.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InvoiceManagement">
+   <children>
+      <AnchorPane prefHeight="88.0" prefWidth="693.0" styleClass="anchorpanel" stylesheets="@stylefrom.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <HyperlinkLabel prefHeight="88.0" prefWidth="1000.0" styleClass="anchorpanel" stylesheets="@stylefrom.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Label layoutX="192.0" layoutY="8.0" prefHeight="71.0" prefWidth="204.0" styleClass="labeltitle" stylesheets="@stylefrom.css" text="Invoices" textFill="WHITE" />
+            <MaterialDesignIconView fill="TRANSPARENT" glyphName="CLIPBOARD_TEXT" layoutX="149.0" layoutY="59.0" size="40" wrappingWidth="32.00000002980232" />
+         </children></AnchorPane>
+      <AnchorPane layoutY="88.0" prefHeight="200.0" prefWidth="200.0" styleClass="other" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="88.0">
+         <children>
+            <AnchorPane prefHeight="211.0" prefWidth="1066.0" style="-fx-background-color: #000000;" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="8.0" layoutY="21.0" prefHeight="36.0" prefWidth="39.0" styleClass="labelnormal" stylesheets="@style.css" text="ID: " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="27.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="tfID" layoutX="59.0" layoutY="20.0" prefHeight="25.0" prefWidth="93.0" styleClass="textfield" stylesheets="@style.css" />
+                  <Label layoutX="183.0" layoutY="27.0" styleClass="labelnormal" stylesheets="@style.css" text="Total: " />
+                  <JFXTextField fx:id="tfTotal" layoutX="278.0" layoutY="23.0" prefHeight="30.0" prefWidth="186.0" styleClass="textfield" />
+                  <Label layoutX="549.0" layoutY="27.0" styleClass="labelnormal" stylesheets="@style.css" text="Buy date: " />
+                  <Label layoutX="7.0" layoutY="101.0" styleClass="labelnormal" stylesheets="@style.css" text="Employees" />
+                  <JFXComboBox fx:id="cmbStatus" layoutX="657.0" layoutY="102.0" prefHeight="25.0" prefWidth="204.0" />
+                  <Label layoutX="549.0" layoutY="102.0" styleClass="labelnormal" stylesheets="@style.css" text="Status" />
+                  <JFXButton fx:id="btnNew" layoutX="647.0" layoutY="155.0" onAction="#BtnNewClick" prefHeight="37.0" prefWidth="83.0" styleClass="buttonnormal" text="New" />
+                  <JFXButton fx:id="btnSave" layoutX="762.0" layoutY="155.0" onAction="#btnSaveClick" prefHeight="37.0" prefWidth="72.0" styleClass="buttonnormal" text="Save" />
+                  <JFXButton fx:id="btnDelete" layoutX="862.0" layoutY="155.0" onAction="#btnDeleteClick" prefHeight="37.0" prefWidth="83.0" styleClass="buttonnormal" text="Delete" AnchorPane.rightAnchor="121.0" />
+                  <JFXTextField fx:id="tfEmployee" layoutX="95.0" layoutY="99.0" prefHeight="30.0" prefWidth="370.0" styleClass="textfield" />
+                  <JFXDatePicker fx:id="DatePickerBuyDate" layoutX="676.0" layoutY="27.0" prefHeight="25.0" prefWidth="238.0" />
+               </children>
+            </AnchorPane>
+            <TableView fx:id="tbInvoice" layoutY="210.0" onMouseClicked="#TableClick" prefHeight="454.0" prefWidth="1056.0" stylesheets="@tableview.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="210.0">
+              <columns>
+                <TableColumn fx:id="colSerial" prefWidth="75.0" text="Serial" />
+                <TableColumn fx:id="colTotal" prefWidth="200.0" text="Total" />
+                  <TableColumn fx:id="colBuyDate" prefWidth="190.0" text="Buy date" />
+                  <TableColumn fx:id="colEmployee" prefWidth="311.0" text="Employee" />
+                  <TableColumn fx:id="colStatus" prefWidth="279.0" text="Status" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

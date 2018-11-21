@@ -17,7 +17,7 @@
          <children>
             <HyperlinkLabel prefHeight="88.0" prefWidth="1000.0" styleClass="anchorpanel" stylesheets="@stylefrom.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Label layoutX="192.0" layoutY="8.0" prefHeight="71.0" prefWidth="204.0" styleClass="labeltitle" stylesheets="@stylefrom.css" text="Movie" textFill="WHITE" />
-            <MaterialDesignIconView fill="TRANSPARENT" glyphName="ACCOUNT_MULTIPLE" layoutX="123.0" layoutY="62.0" size="50" wrappingWidth="39.0" />
+            <MaterialDesignIconView fill="TRANSPARENT" glyphName="MESSAGE_VIDEO" layoutX="153.0" layoutY="62.0" size="50" wrappingWidth="39.0" />
          </children></AnchorPane>
       <AnchorPane layoutY="88.0" prefHeight="200.0" prefWidth="200.0" styleClass="other" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="88.0">
          <children>

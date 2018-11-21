@@ -169,9 +169,6 @@ public class MovieManagementController implements Initializable {
            tfContent.setText(movies.getContent());
            DatePickerRelease.setValue(LocalDate.parse(movies.getRelease_date().toString()));
              int row = tbMovies.getSelectionModel().getSelectedIndex();
-                   
-            
-            
         }
     }
     
@@ -201,7 +198,7 @@ public class MovieManagementController implements Initializable {
         tfLanguage.setText("");
         tfRate.setText("");
         tfContent.setText("");
-        DatePickerRelease.setValue(LocalDate.MAX);
+        DatePickerRelease.setValue(LocalDate.now());
     }
 
     @FXML

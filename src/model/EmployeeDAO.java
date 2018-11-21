@@ -26,8 +26,8 @@ public class EmployeeDAO {
             e.setPassword(rs.getString("password"));
             e.setGender(rs.getInt("gender"));
             e.setId_card_number(rs.getInt("id_card_number"));
-            e.setProvince_id(rs.getString("provinceName"));
             e.setAddress(rs.getString("address"));
+            e.setProvince_id(rs.getString("provinceName"));
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -49,7 +49,7 @@ public class EmployeeDAO {
             ex.printStackTrace();
             System.out.println("Can't load database!");
         }
-        return  list;
+        return list;
     }
 
     public ObservableList<Employee> getEmployee() {
@@ -73,7 +73,20 @@ public class EmployeeDAO {
 
         return list;
     }
-
+    public Employee getEmployee(int id){
+        String sql = " select employees.id, employees.name, employees.email, employees.password, "
+                + "employees.gender, employees.id_card_number, province_id,"
+                + " employees.address from employees where id = "+ id;
+         Employee employee = null;
+        try {
+            ResultSet rs = DBUtil.dbExecute(sql);
+             employee = createEmployee(rs);
+        } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace();
+            System.out.println("Can't load database!");
+        }
+        return employee;
+    }
     private Province createProvince(ResultSet rs) {
         Province p = new Province();
         try {

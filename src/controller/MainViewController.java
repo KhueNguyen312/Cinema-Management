@@ -175,12 +175,38 @@ public class MainViewController implements Initializable {
         MaterialDesignIconView billIcon = new MaterialDesignIconView(MaterialDesignIcon.CLIPBOARD_TEXT);
         billIcon.setId(".glyph-icon");
         btnBillManagement.setGraphic(billIcon);
+        btnBillManagement.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    loadInvoices(event);
+                } catch (IOException ex) {
+                    Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.print("Can't show invoices");
+                }
+                
+            }
+        });
+        
         
         JFXButton btnRoomManagement = CreateButton("Room Management");
         btnRoomManagement.setButtonType(JFXButton.ButtonType.RAISED);
         MaterialDesignIconView roomIcon = new MaterialDesignIconView(MaterialDesignIcon.PRESENTATION_PLAY);
         roomIcon.setId(".glyph-icon");
         btnRoomManagement.setGraphic(roomIcon);
+        btnRoomManagement.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            try {
+                   loadRooms(event);
+                } catch (IOException ex) {
+                    Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.print("Can't show employees");
+                }
+                
+            }
+        });
+                
         
         nodeListMng.addAnimatedNode(btnManagement);
         nodeListMng.addAnimatedNode(btnMovieManagement);
@@ -229,4 +255,15 @@ public class MainViewController implements Initializable {
         rootPanel.getChildren().setAll(pane);
         GeneralFuntion.FitChildContent(pane);
     }
+    private  void loadRooms(ActionEvent event) throws  IOException{
+         AnchorPane pane = FXMLLoader.load(getClass().getResource("/Management/RoomManagement.fxml"));
+        rootPanel.getChildren().setAll(pane);
+        GeneralFuntion.FitChildContent(pane);
+    }
+    private  void loadInvoices(ActionEvent event) throws  IOException{
+         AnchorPane pane = FXMLLoader.load(getClass().getResource("/Management/InvoiceManagement.fxml"));
+        rootPanel.getChildren().setAll(pane);
+        GeneralFuntion.FitChildContent(pane);
+    }
+    
 }

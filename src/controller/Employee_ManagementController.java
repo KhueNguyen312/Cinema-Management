@@ -104,7 +104,7 @@ public class Employee_ManagementController implements Initializable {
         colName.setCellValueFactory(new PropertyValueFactory<Employee, String>("name"));
         colEmail.setCellValueFactory(new PropertyValueFactory<Employee, String>("email"));
         colCardNumber.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("id_card_number"));
-        colProvince_id.setCellValueFactory(new PropertyValueFactory<Employee, String>("province_id"));
+        colProvince_id.setCellValueFactory(new PropertyValueFactory<Employee, String>("provinceName"));
         colAddress.setCellValueFactory(new PropertyValueFactory<Employee, String>("address"));
         colGender.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Employee, gender>, ObservableValue<gender>>() {
             @Override

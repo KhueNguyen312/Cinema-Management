@@ -5,12 +5,15 @@
  */
 package model;
 
+import java.util.List;
+
 /**
  *
  * @author stari
  */
 public class Employee {
-   private int id;
+
+    private int id;
     private String name;
     private String email;
     private String password;
@@ -30,7 +33,9 @@ public class Employee {
         this.address = address;
     }
 
-    public  Employee(){}
+    public Employee() {
+    }
+
     public Employee(int id) {
         this.id = id;
         this.name = null;
@@ -74,7 +79,6 @@ public class Employee {
         return address;
     }
 
-
     public void setId(int id) {
         this.id = id;
     }
@@ -107,6 +111,17 @@ public class Employee {
         this.address = address;
     }
 
-
-    
+    @Override
+    public String toString() {
+        return this.getName();
+    }
+    public  static Employee getById(int id, List<Employee> list)
+    {
+        for(Employee e : list)
+        {
+            if(e.getId() == id)
+                return e;
+        }
+        return null;
+    }
 }
