@@ -7,6 +7,8 @@ package model;
 
 import java.sql.*;
 import java.util.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -25,8 +27,8 @@ public class ProductDAO {
         }
         return product;
     }
-    public List<Product> getListProduct(String sql){
-        List<Product> listProduct = new ArrayList<>();
+    public ObservableList<Product> getListProduct(String sql){
+       ObservableList<Product> listProduct = FXCollections.observableArrayList();
         try {
            ResultSet rs = DBUtil.dbExecute(sql);
          while (rs.next()) {

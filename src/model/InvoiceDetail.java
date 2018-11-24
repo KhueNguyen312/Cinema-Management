@@ -26,6 +26,11 @@ public class InvoiceDetail {
         this.price = price;
     }
 
+    public InvoiceDetail(int invoiceId) {
+        this.invoiceId = invoiceId;
+    }
+    
+
     public int getId() {
         return id;
     }

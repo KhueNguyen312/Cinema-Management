@@ -5,10 +5,9 @@
         <group>
             <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/Cinema-Management/src/model/InvoicesDAO.java</file>
             <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/Cinema-Management/src/controller/InvoiceManagement.java</file>
-            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/Cinema-Management/src/model/Movies.java</file>
-            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/Cinema-Management/src/model/Employee.java</file>
-            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/Cinema-Management/src/Management/stylefrom.css</file>
-            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/Cinema-Management/src/model/Invoices.java</file>
+            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/Cinema-Management/src/model/ProductDAO.java</file>
+            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/Cinema-Management/src/controller/InvoiceDetailManagement.java</file>
+            <file>file:/D:/AnhTuyet/BaiHoc/Hk1-2018-2019/Cinema-Management/src/model/InvoiceDetailDAO.java</file>
         </group>
     </open-files>
 </project-private>

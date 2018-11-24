@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.HyperlinkLabel?>
 
-<AnchorPane id="AnchorPane" prefHeight="752.0" prefWidth="1066.0" styleClass="other" stylesheets="@stylefrom.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InvoiceManagement">
+<AnchorPane id="AnchorPane" fx:id="paneInvoice" prefHeight="752.0" prefWidth="1066.0" styleClass="other" stylesheets="@stylefrom.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InvoiceManagement">
    <children>
       <AnchorPane prefHeight="88.0" prefWidth="693.0" styleClass="anchorpanel" stylesheets="@stylefrom.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
@@ -36,11 +36,12 @@
                   <Label layoutX="7.0" layoutY="101.0" styleClass="labelnormal" stylesheets="@style.css" text="Employees" />
                   <JFXComboBox fx:id="cmbStatus" layoutX="657.0" layoutY="102.0" prefHeight="25.0" prefWidth="204.0" />
                   <Label layoutX="549.0" layoutY="102.0" styleClass="labelnormal" stylesheets="@style.css" text="Status" />
-                  <JFXButton fx:id="btnNew" layoutX="647.0" layoutY="155.0" onAction="#BtnNewClick" prefHeight="37.0" prefWidth="83.0" styleClass="buttonnormal" text="New" />
-                  <JFXButton fx:id="btnSave" layoutX="762.0" layoutY="155.0" onAction="#btnSaveClick" prefHeight="37.0" prefWidth="72.0" styleClass="buttonnormal" text="Save" />
-                  <JFXButton fx:id="btnDelete" layoutX="862.0" layoutY="155.0" onAction="#btnDeleteClick" prefHeight="37.0" prefWidth="83.0" styleClass="buttonnormal" text="Delete" AnchorPane.rightAnchor="121.0" />
+                  <JFXButton fx:id="btnNew" layoutX="712.0" layoutY="155.0" onAction="#BtnNewClick" prefHeight="37.0" prefWidth="65.0" styleClass="buttonnormal" text="New" />
+                  <JFXButton fx:id="btnSave" layoutX="795.0" layoutY="155.0" onAction="#btnSaveClick" prefHeight="37.0" prefWidth="65.0" styleClass="buttonnormal" text="Save" />
+                  <JFXButton fx:id="btnDelete" layoutX="862.0" layoutY="155.0" onAction="#btnDeleteClick" prefHeight="37.0" prefWidth="76.0" styleClass="buttonnormal" text="Delete" AnchorPane.rightAnchor="121.0" />
                   <JFXTextField fx:id="tfEmployee" layoutX="95.0" layoutY="99.0" prefHeight="30.0" prefWidth="370.0" styleClass="textfield" />
                   <JFXDatePicker fx:id="DatePickerBuyDate" layoutX="676.0" layoutY="27.0" prefHeight="25.0" prefWidth="238.0" />
+                  <JFXButton fx:id="btnDetail" layoutX="616.0" layoutY="155.0" onAction="#BtnDetailClick" prefHeight="37.0" prefWidth="83.0" styleClass="buttonnormal" text="Detail" />
                </children>
             </AnchorPane>
             <TableView fx:id="tbInvoice" layoutY="210.0" onMouseClicked="#TableClick" prefHeight="454.0" prefWidth="1056.0" stylesheets="@tableview.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="210.0">
