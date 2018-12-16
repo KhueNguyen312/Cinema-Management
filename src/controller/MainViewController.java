@@ -11,6 +11,8 @@ import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -139,24 +141,72 @@ public class MainViewController implements Initializable {
         MaterialDesignIconView movieMngIcon = new MaterialDesignIconView(MaterialDesignIcon.FILM);
         movieMngIcon.setId(".glyph-icon");
         btnMovieManagement.setGraphic(movieMngIcon);
-        
+        btnMovieManagement.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+           
+                try {
+                    loadMovies(event);
+                } catch (IOException ex) {
+                    Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.print("Can't show movies");
+                }
+            }
+        });
         JFXButton btnAccountManagement = CreateButton("Account Management");
         btnAccountManagement.setButtonType(JFXButton.ButtonType.RAISED);
         MaterialDesignIconView accountMngIcon = new MaterialDesignIconView(MaterialDesignIcon.ACCOUNT_BOX);
         accountMngIcon.setId(".glyph-icon");
         btnAccountManagement.setGraphic(accountMngIcon);
-        
+        btnAccountManagement.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+           
+                try {
+                    loadEmployees(event);
+                } catch (IOException ex) {
+                    Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.print("Can't show employees");
+                }
+            }
+        });
         JFXButton btnBillManagement = CreateButton("Bill Management");
         btnBillManagement.setButtonType(JFXButton.ButtonType.RAISED);
         MaterialDesignIconView billIcon = new MaterialDesignIconView(MaterialDesignIcon.CLIPBOARD_TEXT);
         billIcon.setId(".glyph-icon");
         btnBillManagement.setGraphic(billIcon);
+        btnBillManagement.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    loadInvoices(event);
+                } catch (IOException ex) {
+                    Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.print("Can't show invoices");
+                }
+                
+            }
+        });
+        
         
         JFXButton btnRoomManagement = CreateButton("Room Management");
         btnRoomManagement.setButtonType(JFXButton.ButtonType.RAISED);
         MaterialDesignIconView roomIcon = new MaterialDesignIconView(MaterialDesignIcon.PRESENTATION_PLAY);
         roomIcon.setId(".glyph-icon");
         btnRoomManagement.setGraphic(roomIcon);
+        btnRoomManagement.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            try {
+                   loadRooms(event);
+                } catch (IOException ex) {
+                    Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.print("Can't show employees");
+                }
+                
+            }
+        });
+                
         
         nodeListMng.addAnimatedNode(btnManagement);
         nodeListMng.addAnimatedNode(btnMovieManagement);
@@ -194,4 +244,26 @@ public class MainViewController implements Initializable {
         //AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/Layout/AccountManagement.fxml"));
 	//rootPanel.getChildren().setAll(pane);
     }
+    private  void loadEmployees(ActionEvent event) throws IOException
+    {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/Management/Employee_Management.fxml"));
+        rootPanel.getChildren().setAll(pane);
+        GeneralFuntion.FitChildContent(pane);
+    }                    
+    private  void loadMovies(ActionEvent event) throws  IOException{
+         AnchorPane pane = FXMLLoader.load(getClass().getResource("/Management/Movie_management.fxml"));
+        rootPanel.getChildren().setAll(pane);
+        GeneralFuntion.FitChildContent(pane);
+    }
+    private  void loadRooms(ActionEvent event) throws  IOException{
+         AnchorPane pane = FXMLLoader.load(getClass().getResource("/Management/RoomManagement.fxml"));
+        rootPanel.getChildren().setAll(pane);
+        GeneralFuntion.FitChildContent(pane);
+    }
+    private  void loadInvoices(ActionEvent event) throws  IOException{
+         AnchorPane pane = FXMLLoader.load(getClass().getResource("/Management/InvoiceManagement.fxml"));
+        rootPanel.getChildren().setAll(pane);
+        GeneralFuntion.FitChildContent(pane);
+    }
+    
 }

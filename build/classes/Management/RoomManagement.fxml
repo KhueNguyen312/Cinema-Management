@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.HyperlinkLabel?>
+
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1066.0" styleClass="parent" stylesheets="@stylefrom.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RoomManagement">
+   <children>
+      <AnchorPane prefHeight="88.0" prefWidth="693.0" styleClass="parent" stylesheets="@stylefrom.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <HyperlinkLabel prefHeight="88.0" prefWidth="1217.0" styleClass="anchorpanel" stylesheets="@stylefrom.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Label layoutX="162.0" layoutY="8.0" prefHeight="71.0" prefWidth="253.0" styleClass="labeltitle" stylesheets="@style.css" text="Rooms" textFill="WHITE" />
+            <MaterialDesignIconView fill="TRANSPARENT" glyphName="PRESENTATION_PLAY" layoutX="110.0" layoutY="62.0" size="50" wrappingWidth="39.0" />
+         </children></AnchorPane>
+      <AnchorPane layoutY="88.0" prefHeight="200.0" prefWidth="200.0" styleClass="other" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="88.0">
+         <children>
+            <AnchorPane prefHeight="131.0" prefWidth="1066.0" style="-fx-background-color: #000000;" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="46.0" layoutY="14.0" prefHeight="36.0" prefWidth="39.0" styleClass="labelnormal" stylesheets="@style.css" text="ID: " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="27.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="tfID" layoutX="140.0" layoutY="17.0" prefHeight="30.0" prefWidth="213.0" styleClass="textfield" stylesheets="@style.css" />
+                  <Label layoutX="470.0" layoutY="20.0" styleClass="labelnormal" stylesheets="@style.css" text="Name" />
+                  <JFXTextField fx:id="tfName" layoutX="567.0" layoutY="17.0" prefHeight="30.0" prefWidth="200.0" styleClass="textfield" />
+                  <JFXButton fx:id="btnNew" layoutX="567.0" layoutY="79.0" onAction="#BtnNewClick" prefHeight="37.0" prefWidth="83.0" styleClass="buttonnormal" text="New" AnchorPane.leftAnchor="567.0" />
+                  <JFXButton fx:id="btnSave" layoutX="669.0" layoutY="79.0" onAction="#btnSaveClick" prefHeight="37.0" prefWidth="83.0" styleClass="buttonnormal" text="Save" />
+                  <JFXButton fx:id="btnDelete" layoutX="779.0" layoutY="79.0" onAction="#btnDeleteClick" prefHeight="37.0" prefWidth="83.0" styleClass="buttonnormal" text="Delete" AnchorPane.rightAnchor="204.0" />
+               </children>
+            </AnchorPane>
+            <TableView fx:id="tbRoom" layoutY="133.0" onMouseClicked="#TableClick" prefHeight="547.0" prefWidth="1058.0" stylesheets="@tableview.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="133.0">
+              <columns>
+                <TableColumn fx:id="colSerial" prefWidth="75.0" text="Serial" />
+                <TableColumn fx:id="colName" prefWidth="982.0000076293945" text="Name" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

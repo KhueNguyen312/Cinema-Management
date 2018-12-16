@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.List;
+
 /**
  *
  * @author stari
@@ -55,6 +57,19 @@ public class Product {
     public void setDes(String des) {
         this.des = des;
     }
-    
-    
+    public static Product getbyId(int id, List<Product> list)
+    {
+        for(Product p : list)
+        {
+            if(id == p.getId())
+            {
+                return  p;
+            }
+        }
+        return null;
+    }
+    @Override
+    public String toString(){
+        return this.getName();
+    }
 }

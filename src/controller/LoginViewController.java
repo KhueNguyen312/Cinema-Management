@@ -52,7 +52,7 @@ public class LoginViewController implements Initializable {
     private void login(ActionEvent event) throws IOException {
         EmployeeDAO employeeDAO = new EmployeeDAO();
         String sql = "SELECT * FROM `employees` WHERE `email`="+"'"+ tbUserName.getText()+"'"+ "and `password` ="+ "'"+passwordBox.getText()+"'";
-        List<Employee> list = employeeDAO.getListEmployee(sql);
+        List<Employee> list = employeeDAO.getlistEmployee(sql);
         if (list.size()>0){
          ((Node)event.getSource()).getScene().getWindow().hide();
          FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/MainView.fxml"));

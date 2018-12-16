@@ -33,4 +33,67 @@
 .button-hover{
     -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
 }
+.buttonnormal {
+-fx-background-color: 
+        #000000,
+        linear-gradient(#7ebcea, #2f4b8f),
+        linear-gradient(#426ab7, #263e75),
+        linear-gradient(#395cab, #223768),
+        
+        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-background-radius: 30;
+    -fx-padding: 10 20 10 20;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
 
+.labeltitle{
+ -fx-background-image: url("../img/label.jpg");
+    -fx-background-size: 100% 100%; 
+      -fx-font-weight: bold;
+    -fx-font-size: 35px;
+    -fx-font: corbel;
+    -fx-padding: 10 20 10 20;
+/*    -fx-background-color:  #34343B;*/
+}
+
+.labelnormal{
+    /*-fx-background-color:  #34343B;*/
+        -fx-font-weight: bold;
+         -fx-font: corbel;
+         -fx-text-fill: white;
+        -fx-font-size: 16px;
+}
+.anchorpanel{
+    -fx-background-image: url("../img/label.jpg");
+    -fx-background-size: 100% 100%;
+    
+}
+.buttonsubmit{
+    -fx-background-color: 
+        #000000,
+        linear-gradient(#7ebcea, #2f4b8f),
+        linear-gradient(#426ab7, #263e75),
+        linear-gradient(#395cab, #223768),
+        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-padding: 10 20 10 20;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+
+.textfield{
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.comboBox{
+     -fx-text-fill: #ffffff;
+     -fx-text-alignment: #ffffff;
+    -fx-font-size: 14px;
+}
+.comboBox .cell{
+    -fx-text-fill: white;
+    -fx-font: 16px "Arial";
+}
